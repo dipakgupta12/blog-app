@@ -5,15 +5,15 @@ export default function PostModal() {
   const [showModal, setShowModal] = React.useState(false);
   return (
     <>
-    <div className="max-w-[1200px] flex justify-between mx-auto items-center mb-10">
+      <div className="max-w-[1200px] flex justify-between mx-auto items-center mb-10">
         <h3 className="text-2xl font-semibold text-black"> Blogs</h3>
-      <button
-        className="bg-gradient-to-r from-yellow-400 to-yellow-500 rounded-xl text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-        type="button"
-        onClick={() => setShowModal(true)}
-      >
-Add new post
-      </button>
+        <button
+          className="bg-gradient-to-r from-yellow-400 to-yellow-500 rounded-xl text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+          type="button"
+          onClick={() => setShowModal(true)}
+        >
+          Add new post
+        </button>
       </div>
       {showModal ? (
         <>
@@ -39,7 +39,7 @@ Add new post
                 </div>
                 {/*body*/}
                 <div className="relative p-6 flex-auto">
-                <PostForm />
+                  <PostForm />
                 </div>
                 {/*footer*/}
                 <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
@@ -50,7 +50,7 @@ Add new post
                   >
                     Close
                   </button>
-                  <button         className="bg-gradient-to-r from-yellow-400 to-yellow-500 rounded-xl text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                  <button className="bg-gradient-to-r from-yellow-400 to-yellow-500 rounded-xl text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                     type="button"
                     onClick={() => setShowModal(false)}
                   >
