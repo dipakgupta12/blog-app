@@ -1,6 +1,7 @@
 const express = require("express");
 const dotenv = require("dotenv");
 const connectToDatabase = require("./src/config/db");
+const blogRoute = require("./src/routers/blog-routers");
 
 dotenv.config();
 const app = express();
@@ -11,16 +12,8 @@ connectToDatabase();
 // middlewares
 app.use(express.json());
 
-// routes
-app.get("/api/blog", (req, res) => {
-  try {
-    return res.status(200).json({ success: true, message: "OK" });
-  } catch (err) {
-    return res
-      .status(200)
-      .json({ success: false, message: "Something went wrong" });
-  }
-});
+// all routes
+app.use("/api/blog", blogRoute);
 
 // app is starting on the port
 app.listen(process.env.APP_PORT, () => {
