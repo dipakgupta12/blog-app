@@ -1,8 +1,12 @@
 const express = require("express");
 const dotenv = require("dotenv");
+const connectToDatabase = require("./src/config/db");
 
 dotenv.config();
 const app = express();
+
+// dastabase configuration
+connectToDatabase();
 
 // middlewares
 app.use(express.json());
