@@ -23,9 +23,9 @@ export const fetchBlogDataDetails = async (id) => {
   }
 };
 
-export const postData = async (data) => {
+export const createBlogAPI = async (data) => {
   try {
-    const response = await axios.post(API_BASE_URL, data);
+    const response = await axios.post(API_BASE_URL + "/blog/create", data);
     return response.data;
   } catch (error) {
     console.error('Error posting data:', error);
