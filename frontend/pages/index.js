@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import BlogCard from "../components/BlogCard";
 import Layout from "../components/layout/Layout";
-import { fetchData } from "../utils/api";
-import NoDataFound from "../components/noDataFoundCard";
+import { fetchData } from "../service/api";
+import NoDataFound from "../components/NoDataFoundCard";
 import Meta from "../utils/Meta";
 import Loader from "../components/loader/Loader";
 
