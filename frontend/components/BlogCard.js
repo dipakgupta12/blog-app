@@ -4,6 +4,7 @@ import Link from "next/link";
 import React, { useState } from "react";
 import { dateFormat } from "./../utils/constants";
 import ConfirmationModal from "./modal/ConfirmationModal";
+import PostModal from "./modal/PostModal";
 
 const BlogCard = ({ title, author, date, content, isEditPage, image, id, delteUserBlog }) => {
   const [isReadMore, setIsReadMore] = useState(false);
@@ -40,16 +41,8 @@ const BlogCard = ({ title, author, date, content, isEditPage, image, id, delteUs
 
           {isEditPage && (
             <div className="my-5 flex gap- justify-end">
-              <span className="flex gap-2 text-gray-700 items-center pr-2 mr-2 border-r border-[#d1d1d1] cursor-pointer">
-                <img
-                  className="w-8 h-8"
-                  alt="edit"
-                  src="https://cdn3.iconfinder.com/data/icons/user-interface-web-1/550/web-circle-circular-round_58-512.png"
-                />
-                Edit
-              </span>
-
-              <ConfirmationModal id={id} delteUserBlog={delteUserBlog}/>
+              <PostModal isEditPage={true} isNoDataFoundModal={false} />
+              <ConfirmationModal id={id} delteUserBlog={delteUserBlog} />
             </div>
           )}
         </div>

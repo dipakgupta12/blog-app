@@ -13,7 +13,8 @@ export default function NoDataFound() {
                 <span className="text-gray-400 cursor-pointer text-md my-3">
                     Please click here to add new
                 </span>
-                <PostModal isNoDataFoundModal={false}/>
+                <div className="w-[55%] mx-auto">
+                <PostModal isNoDataFoundModal={false}/></div>
             </div>
 
         </div>

@@ -1,19 +1,27 @@
 import React from "react";
 import PostForm from '../PostForm';
 
-export default function PostModal({isNoDataFoundModal}) {
+export default function PostModal({ isNoDataFoundModal, isEditPage }) {
   const [showModal, setShowModal] = React.useState(false);
   return (
     <>
-      <div className="max-w-[1200px] flex justify-between mx-auto items-center mb-3">
-      {isNoDataFoundModal &&<h2 className="text-2xl font-semibold text-black"> Blogs</h2>}
-        <button
-          className="bg-gradient-to-r from-yellow-400 to-yellow-500 rounded-xl text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-          type="button"
-          onClick={() => setShowModal(true)}
-        >
-          Add new post
-        </button>
+      <div className="flex items-center w-full justify-end">
+        {isNoDataFoundModal && <h2 className="text-2xl font-semibold text-black flex-1"> Blogs</h2>}
+        {isEditPage ? <span onClick={() => setShowModal(true)} className="flex gap-2 text-gray-700 items-center pr-2 mr-2 border-r border-[#d1d1d1] cursor-pointer">
+          <img
+            className="w-8 h-8"
+            alt="edit"
+            src="https://cdn3.iconfinder.com/data/icons/user-interface-web-1/550/web-circle-circular-round_58-512.png"
+          />
+          Edit
+        </span> : <div className="position-absolute right-0">
+          <button
+            className="bg-gradient-to-r from-yellow-400 to-yellow-500 rounded-xl text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+            type="button"
+            onClick={() => setShowModal(true)}
+          >
+            Add new post
+          </button></div>}
       </div>
       {showModal ? (
         <>
@@ -44,7 +52,7 @@ export default function PostModal({isNoDataFoundModal}) {
                 {/*footer*/}
                 {/* <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
                   <button
-                    className="text-gray-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                    className="text-gray-700 bg-[#d1d1d1] mr-3 font-bold uppercase px-6 py-3 rounded-md text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                     type="button"
                     onClick={() => setShowModal(false)}
                   >
