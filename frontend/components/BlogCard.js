@@ -6,7 +6,16 @@ import { dateFormat } from "./../utils/constants";
 import ConfirmationModal from "./modal/ConfirmationModal";
 import PostModal from "./modal/PostModal";
 
-const BlogCard = ({ title, author, date, content, isEditPage, image, id, delteUserBlog }) => {
+const BlogCard = ({
+  title,
+  author,
+  date,
+  content,
+  isEditPage,
+  image,
+  id,
+  delteUserBlog,
+}) => {
   const [isReadMore, setIsReadMore] = useState(false);
   const toggleReadMore = () => {
     setIsReadMore(!isReadMore);
@@ -16,8 +25,8 @@ const BlogCard = ({ title, author, date, content, isEditPage, image, id, delteUs
   const dataUrl = `data:image/jpeg;base64,${base64ImageData}`;
 
   return (
-    <div className="flex h-[260px] md:w-[49%] sm:w-full bg-white relative shadow-lg rounded-lg my-5 overflow-hidden">
-      <div className="overflow-hidden w-[30%]  cursor-pointer">
+    <div className="flex h-[260px] md:w-[49%] h-[300px] sm:w-full bg-white relative shadow-lg rounded-lg my-5 overflow-hidden">
+      <div className="overflow-hidden w-[30%] bg-gray-200 py-5  cursor-pointer">
         <Link href={`/blog-details/${id}`}>
           <img
             src={dataUrl}
@@ -30,15 +39,20 @@ const BlogCard = ({ title, author, date, content, isEditPage, image, id, delteUs
         <div className="p-6 relative w-full h-full min-h-[100px]">
           <h3 className="text-xl font-semibold text-gray-800">{title}</h3>
           <p
-            className={`mt-4 text-gray-700 overflow-hidden ${isReadMore ? "max-h-[90px]" : "max-h-[50px]"
-              }`}
+            className={`mt-4 text-gray-700 overflow-hidden ${
+              isReadMore ? "max-h-[70px]" : "max-h-[50px]"
+            }`}
           >
             {content}
           </p>
-          <span className="text-yellow-500 ml-1" onClick={toggleReadMore}>
-            {isReadMore ? "Read Less" : "Read More"}
-          </span>
-
+          {content && content.length > 120 && (
+            <span
+              className="text-yellow-500 ml-1 cursor-pointer"
+              onClick={toggleReadMore}
+            >
+              {isReadMore ? "Read Less" : "Read More"}
+            </span>
+          )}
           {isEditPage && (
             <div className="my-5 flex gap- justify-end">
               <PostModal isEditPage={true} isNoDataFoundModal={false} postId={id} editMode={true}/>

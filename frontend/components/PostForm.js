@@ -5,6 +5,7 @@ import { Formik, Form, Field, ErrorMessage, useFormik } from "formik";
 import * as Yup from "yup";
 import { createBlogAPI, fetchBlogDataDetails, updateBlogAPI } from "../service/api";
 import { toast } from "react-toastify";
+import ButtonLoader from "./../components/button-loader/ButtonLoader";
 
 const initialValues = {
   title: "",
@@ -26,6 +27,7 @@ const bufferToFile = (bufferImageData) => {
 };
 
 const AddEditPostPage = ({ setShowModal, editMode, postId }) => {
+  const [submitBtnDisable, setSubmitBtnDisable] = useState(false);
   const router = useRouter();
   const [initialValuesForEdit, setInitialValuesForEdit] = useState(initialValues);
 
@@ -53,6 +55,7 @@ const AddEditPostPage = ({ setShowModal, editMode, postId }) => {
   }, [editMode, postId]);
 
   const handleSubmit = async (values, { setFieldValue }) => {
+    setSubmitBtnDisable(true);
     const formData = new FormData();
 
     // Append form fields to the FormData object
@@ -82,7 +85,7 @@ const AddEditPostPage = ({ setShowModal, editMode, postId }) => {
           toast.error(response.message);
         }
       }
-
+      setSubmitBtnDisable(false);
     } catch (error) {
       console.error("API error:", error);
     }
@@ -93,18 +96,15 @@ const AddEditPostPage = ({ setShowModal, editMode, postId }) => {
     onSubmit: handleSubmit,
   });
   return (
-    <div className="addpostpage d-flex align-items-center justify-content-center h-[65vh] overflow-auto">
-
+    <div className="addpostpage d-flex align-items-center justify-content-center max-h-[65vh] overflow-auto">
       <Formik
         initialValues={initialValuesForEdit}
         validationSchema={validationSchema}
         onSubmit={handleSubmit}
         enableReinitialize={true}
       >
-        {(formik = useFormik({
-          initialValues: initialValuesForEdit,
-        })) => (
-          <Form className="d-flex flex-column addpostForm">
+        {(formik) => (
+          <Form className="d-flex flex-column addpostForm px-3">
             <div className="flex flex-col mb-3">
               <label className="text-black mb-2" htmlFor="title">
                 Title
@@ -175,13 +175,23 @@ const AddEditPostPage = ({ setShowModal, editMode, postId }) => {
               />
               <ErrorMessage name="image" component="div" className="error" />
             </div>
+            <div className="flex justify-end">
+              <button
+                className="text-gray-700 bg-[#d1d1d1] mr-3 font-bold uppercase px-6 py-3 rounded-md text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                type="button"
+                onClick={() => setShowModal(false)}
+              >
+                Close
+              </button>
 
-            <button
-              type="submit"
-              className="bg-gradient-to-r from-yellow-400 to-yellow-500 rounded-xl text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-            >
-              Submit
-            </button>
+              <button
+                type="submit"
+                className="bg-gradient-to-r from-yellow-400 to-yellow-500 rounded-md text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                disabled={submitBtnDisable}
+              >
+                {submitBtnDisable ? <ButtonLoader /> : "Submit"}
+              </button>
+            </div>
           </Form>
         )}
       </Formik>
