@@ -1,6 +1,5 @@
 // pages/add-edit-post.js
 import React, { useState } from "react";
-import { useRouter } from "next/router";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { createBlogAPI } from "../utils/api";
@@ -21,7 +20,6 @@ const validationSchema = Yup.object({
 });
 
 const AddEditPostPage = ({ setShowModal }) => {
-  const router = useRouter();
 
   const handleSubmit = async (values, { setFieldValue }) => {
     const formData = new FormData();
@@ -36,7 +34,6 @@ const AddEditPostPage = ({ setShowModal }) => {
       const response = await createBlogAPI(formData); // Send the FormData to your API
       if (response?.success) {
         toast.success(response.message);
-        router.push("/");
         setShowModal(false);
       } else if (response?.success === false) {
         toast.error(response.message);
