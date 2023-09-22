@@ -2,13 +2,26 @@ const blogRoute = require("express").Router();
 const {
   getAllBlogController,
   getOneBlogController,
+  createBlogController,
 } = require("../controllers/blog-controllers");
-const { checkIdMiddleware } = require("../middlewares/blog-middlewares");
+const {
+  checkIdMiddleware,
+  createBlogValidation,
+} = require("../middlewares/blog-middlewares");
+const uploadFile = require("../utils/uploadFile");
 
 // GET /api/blog - getting all blog
 blogRoute.get("/", getAllBlogController);
 
 // GET /api/blog/:id - getting a specific blog
 blogRoute.get("/:id", checkIdMiddleware, getOneBlogController);
+
+// POST /api/blog/create - create a new  blog
+blogRoute.post(
+  "/create",
+  uploadFile.single("image"),
+  createBlogValidation,
+  createBlogController
+);
 
 module.exports = blogRoute;
