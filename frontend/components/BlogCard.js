@@ -3,8 +3,9 @@
 import Link from "next/link";
 import React, { useState } from "react";
 import { dateFormat } from "./../utils/constants";
+import ConfirmationModal from "./modal/ConfirmationModal";
 
-const BlogCard = ({ title, author, date, content, isEditPage, image }) => {
+const BlogCard = ({ title, author, date, content, isEditPage, image, id, delteUserBlog }) => {
   const [isReadMore, setIsReadMore] = useState(false);
   const toggleReadMore = () => {
     setIsReadMore(!isReadMore);
@@ -16,7 +17,7 @@ const BlogCard = ({ title, author, date, content, isEditPage, image }) => {
   return (
     <div className="flex h-[260px] md:w-[49%] sm:w-full bg-white relative shadow-lg rounded-lg my-5 overflow-hidden">
       <div className="overflow-hidden w-[30%]  cursor-pointer">
-        <Link href="/blog-details/1">
+        <Link href={`/blog-details/${id}`}>
           <img
             src={dataUrl}
             alt="Blog Image"
@@ -28,9 +29,8 @@ const BlogCard = ({ title, author, date, content, isEditPage, image }) => {
         <div className="p-6 relative w-full h-full min-h-[100px]">
           <h3 className="text-xl font-semibold text-gray-800">{title}</h3>
           <p
-            className={`mt-4 text-gray-700 overflow-hidden ${
-              isReadMore ? "max-h-[90px]" : "max-h-[50px]"
-            }`}
+            className={`mt-4 text-gray-700 overflow-hidden ${isReadMore ? "max-h-[90px]" : "max-h-[50px]"
+              }`}
           >
             {content}
           </p>
@@ -48,14 +48,8 @@ const BlogCard = ({ title, author, date, content, isEditPage, image }) => {
                 />
                 Edit
               </span>
-              <span className="flex gap-2 text-gray-700 items-center  cursor-pointer">
-                <img
-                  className="w-8 h-8"
-                  alt="delete"
-                  src="https://cdn3.iconfinder.com/data/icons/social-messaging-ui-color-line/254000/127-512.png"
-                />
-                Delete
-              </span>
+
+              <ConfirmationModal id={id} delteUserBlog={delteUserBlog}/>
             </div>
           )}
         </div>
