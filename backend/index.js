@@ -1,5 +1,6 @@
 const express = require("express");
 const dotenv = require("dotenv");
+const cors = require("cors");
 const connectToDatabase = require("./src/config/db");
 const blogRoute = require("./src/routers/blog-routers");
 
@@ -11,6 +12,7 @@ connectToDatabase();
 
 // middlewares
 app.use(express.json());
+app.use(cors())
 
 // all routes
 app.use("/api/blog", blogRoute);

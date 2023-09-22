@@ -55,14 +55,14 @@ const AddEditPostPage = () => {
           <div className='flex flex-col mb-3'>
             <label htmlFor="content" className='text-black mb-2'>Upload Image</label>
             <input
-   type="file"
-   className="text-sm text-stone-500 w-full
+              type="file"
+              className="text-sm text-stone-500 w-full
    file:mr-5 file:hidden text-center px-5 py-[14px] border border-gray rounded-sm
    hover:file:cursor-pointer hover:file:bg-blue-50
    hover:file:text-blue-700"
-/>
+            />
           </div>
-          
+
           <button type="submit" className='savepostbtn'>Save Post</button>
         </Form>
       </Formik>

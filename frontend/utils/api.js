@@ -1,11 +1,11 @@
 // utils/api.js
 import axios from 'axios';
 
-const API_BASE_URL = 'YOUR_API_ENDPOINT_HERE';
+const API_BASE_URL = 'http://localhost:8081/api';
 
 export const fetchData = async () => {
   try {
-    const response = await axios.get(API_BASE_URL);
+    const response = await axios.get(API_BASE_URL+'/blog');
     return response.data; // Assuming your API returns an array of data
   } catch (error) {
     console.error('Error fetching data:', error);
