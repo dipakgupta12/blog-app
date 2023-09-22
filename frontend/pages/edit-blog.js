@@ -3,8 +3,8 @@ import BlogCard from '../components/BlogCard';
 import Layout from '../components/layout/Layout';
 import PostModal from '../components/modal/PostModal';
 import Meta from '../utils/Meta';
-import { fetchData, deleteBlogById } from '../utils/api';
-import NoDataFound from '../components/noDataFoundCard';
+import { fetchData, deleteBlogById } from '../service/api';
+import NoDataFound from '../components/NoDataFoundCard';
 import { toast } from 'react-toastify';
 
 export default function Home() {
@@ -35,7 +35,7 @@ export default function Home() {
       <Layout>
         <div className="container mx-auto mt-10">
           <div className="max-w-[1200px] flex justify-between mx-auto items-center mb-4">
-            <PostModal isNoDataFoundModal={true} />
+            <PostModal isNoDataFoundModal={true} editMode={false} postId="" />
           </div>
           {data?.length > 0 ? (
             <>

@@ -41,7 +41,7 @@ const BlogCard = ({ title, author, date, content, isEditPage, image, id, delteUs
 
           {isEditPage && (
             <div className="my-5 flex gap- justify-end">
-              <PostModal isEditPage={true} isNoDataFoundModal={false} />
+              <PostModal isEditPage={true} isNoDataFoundModal={false} postId={id} editMode={true}/>
               <ConfirmationModal id={id} delteUserBlog={delteUserBlog} />
             </div>
           )}

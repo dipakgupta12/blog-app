@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import Layout from "../../components/layout/Layout";
 import Link from "next/link";
 import Meta from "../../utils/Meta";
-import { fetchBlogDataDetails } from "../../utils/api";
+import { fetchBlogDataDetails } from "../../service/api";
 import { useState, useEffect } from "react";
 import { dateFormat } from "../../utils/constants";
 import Loader from "../../components/loader/Loader";

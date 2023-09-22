@@ -1,7 +1,7 @@
 import React from "react";
 import PostForm from '../PostForm';
 
-export default function PostModal({ isNoDataFoundModal, isEditPage }) {
+export default function PostModal({ isNoDataFoundModal, isEditPage, editMode, postId }) {
   const [showModal, setShowModal] = React.useState(false);
   return (
     <>
@@ -47,24 +47,8 @@ export default function PostModal({ isNoDataFoundModal, isEditPage }) {
                 </div>
                 {/*body*/}
                 <div className="relative p-6 flex-auto">
-                  <PostForm setShowModal={setShowModal}/>
+                  <PostForm setShowModal={setShowModal} editMode={editMode} postId={postId}/>
                 </div>
-                {/*footer*/}
-                {/* <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
-                  <button
-                    className="text-gray-700 bg-[#d1d1d1] mr-3 font-bold uppercase px-6 py-3 rounded-md text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                    type="button"
-                    onClick={() => setShowModal(false)}
-                  >
-                    Close
-                  </button>
-                  <button className="bg-gradient-to-r from-yellow-400 to-yellow-500 rounded-xl text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                    type="button"
-                    onClick={() => setShowModal(false)}
-                  >
-                    Save Changes
-                  </button>
-                </div> */}
               </div>
             </div>
           </div>
