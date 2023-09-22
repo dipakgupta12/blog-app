@@ -4,6 +4,7 @@ const {
   getOneBlogController,
   createBlogController,
   updateBlogController,
+  deleteBlogController,
 } = require("../controllers/blog-controllers");
 const {
   checkIdMiddleware,
@@ -32,5 +33,8 @@ blogRoute.put(
   createBlogValidation,
   updateBlogController
 );
+
+// DELETE /api/blog/:id - create a new  blog
+blogRoute.delete("/:id", checkIdMiddleware, deleteBlogController);
 
 module.exports = blogRoute;
