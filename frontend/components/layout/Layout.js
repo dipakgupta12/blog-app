@@ -6,7 +6,7 @@ const Layout = ({ children }) => {
   return (
     <div>
       <Header />
-      <main>{children}</main>
+      <main className='container max-w-[1200px] mx-auto sm:px-0 px-3'>{children}</main>
     </div>
   );
 };

@@ -37,25 +37,32 @@ const AddEditPostPage = () => {
   };
 
   return (
-    <div className='addpostpage d-flex align-items-center justify-content-center'>
+    <div className='addpostpage d-flex align-items-center justify-content-center h-[65vh] overflow-auto'>
       <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleSubmit}>
         <Form className='d-flex flex-column addpostForm'>
           <div className='flex flex-col mb-3'>
-            <label htmlFor="title" className='text-black'>Title</label>
+            <label htmlFor="title" className='text-black mb-2'>Title</label>
             <Field className="inputField p-3 bg-white border border-gray" type="text" id="title" name="title" />
           </div>
           <div className='flex flex-col mb-3'>
-            <label htmlFor="summary" className='text-black'>Author</label>
+            <label htmlFor="summary" className='text-black mb-2'>Author</label>
             <Field className="inputField p-3 bg-white border border-gray" type="text" id="author" name="author" />
           </div>
           <div className='flex flex-col mb-3'>
-            <label htmlFor="content" className='text-black'>Content</label>
+            <label htmlFor="content" className='text-black mb-2'>Content</label>
             <Field className="inputField p-3 bg-white border border-gray" as="textarea" id="content" name="content" />
           </div>
-
-          <label class="block mb-2  text-sm font-medium text-gray-900 dark:text-white" for="file_input">Upload file</label>
-          <input class="block w-full text-sm text-gray-900 bg-white border border-gray rounded-lg cursor-pointer  focus:outline-none" id="file_input" type="file" />
-
+          <div className='flex flex-col mb-3'>
+            <label htmlFor="content" className='text-black mb-2'>Upload Image</label>
+            <input
+   type="file"
+   className="text-sm text-stone-500 w-full
+   file:mr-5 file:hidden text-center px-5 py-[14px] border border-gray rounded-sm
+   hover:file:cursor-pointer hover:file:bg-blue-50
+   hover:file:text-blue-700"
+/>
+          </div>
+          
           <button type="submit" className='savepostbtn'>Save Post</button>
         </Form>
       </Formik>

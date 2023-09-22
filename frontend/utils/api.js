@@ -14,11 +14,21 @@ export const fetchData = async () => {
 };
 
 export const postData = async (data) => {
-    try {
-      const response = await axios.post(API_BASE_URL, data);
-      return response.data;
-    } catch (error) {
-      console.error('Error posting data:', error);
-      throw error;
-    }
-  };
+  try {
+    const response = await axios.post(API_BASE_URL, data);
+    return response.data;
+  } catch (error) {
+    console.error('Error posting data:', error);
+    throw error;
+  }
+};
+
+export const deleteUserById = async (userId) => {
+  try {
+    const response = await axios.delete(`${API_BASE_URL}/${userId}`);
+    return response.data;
+  } catch (error) {
+    console.error('Error deleting user:', error);
+    throw error;
+  }
+};
