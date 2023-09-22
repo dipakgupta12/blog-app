@@ -99,9 +99,11 @@ const updateBlogController = async (req, res) => {
     existingBlog.title = title;
     existingBlog.authorName = authorName;
     existingBlog.description = description;
-    existingBlog.image = fs.readFileSync(
-      path.join(__dirname, "../../uploads/") + req.file.filename
-    );
+    if (req.file !== undefined) {
+      existingBlog.image = fs.readFileSync(
+        path.join(__dirname, "../../uploads/") + req.file.filename
+      );
+    }
 
     // Save the updated blog post
     await existingBlog.save();

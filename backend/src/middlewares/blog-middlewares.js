@@ -23,10 +23,6 @@ const createBlogValidation = (req, res, next) => {
     return res
       .status(400)
       .json({ success: false, message: "Description is required" });
-  else if (!req.file)
-    return res
-      .status(400)
-      .json({ success: false, message: "Image file is required" });
   return next();
 };
 

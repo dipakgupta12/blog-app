@@ -18,7 +18,7 @@ const validationSchema = Yup.object({
   title: Yup.string().required("Title is required"),
   authorName: Yup.string().required("Author is required"),
   description: Yup.string().required("Description is required"),
-  image: Yup.mixed().required("Image is required"), // Assuming image is required
+  // image: Yup.mixed().required("Image is required"), // Assuming image is required
 });
 
 const bufferToFile = (bufferImageData) => {
@@ -40,7 +40,7 @@ const AddEditPostPage = ({ setShowModal, editMode, postId }) => {
             if (result?.blog) {
               const imageData = bufferToFile(result?.blog.image.data);
               const { title, authorName, description } = result?.blog; // Replace with API response structure
-              setInitialValuesForEdit({ title, authorName, description, image: imageData });
+              setInitialValuesForEdit({ title, authorName, description, image: null });
             } else {
               toast.error(result.message);
             }
